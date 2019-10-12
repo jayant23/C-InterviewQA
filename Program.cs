@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace ConsoleApp1
 {
@@ -7,9 +8,12 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             string inputString = "hello world!";
+            Console.WriteLine(ReverseString(inputString));
             Console.WriteLine(UppercaseWords(inputString));
+
             Console.ReadKey();
         }
+        #region First charactor upper case of sentence
         static string UppercaseWords(string value)
         {
             char[] array = value.ToCharArray();
@@ -32,5 +36,20 @@ namespace ConsoleApp1
             }
             return new string(array);
         }
+        #endregion
+        #region Reverse string
+
+        static string ReverseString(string value)
+        {
+            Stack stk1 = new Stack(value.Length);
+            foreach (char c in value)
+                stk1.Push(c);
+            string revString = null;
+            foreach (char c in value)
+                revString += stk1.Pop();
+            return revString;
+        }
+        #endregion
+
     }
 }
